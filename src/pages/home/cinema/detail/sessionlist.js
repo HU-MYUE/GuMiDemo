@@ -25,7 +25,7 @@ export default class SessionList extends Component {
     }
    
     render() {
-        let { date, selected } = this.state
+        let { date, selected,data} = this.state
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
@@ -46,6 +46,13 @@ export default class SessionList extends Component {
                     renderItem={this.renderMovie}
                     key={item => item.id}
                 />
+                {/* <View>
+                    {data.map((item, index) => {
+                        return (
+                            
+                        );
+                    })}
+                </View> */}
             </View>
         );
     }
@@ -68,7 +75,7 @@ export default class SessionList extends Component {
                         <Text style={styles.maxprice}>{item.maxprice}</Text>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={()=>{alert('购票')}} >
+                        <TouchableOpacity onPress={()=>{alert('购票了')}} >
                             <Text style={styles.button}>购票</Text>
                         </TouchableOpacity>
                     </View>
