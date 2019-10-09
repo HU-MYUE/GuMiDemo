@@ -68,7 +68,7 @@ export default class SessionList extends Component {
                         <Text style={styles.maxprice}>{item.maxprice}</Text>
                     </View>
                     <View>
-                        <TouchableOpacity onPress={()=>{alert('购票')}} >
+                        <TouchableOpacity onPress={()=>{alert('购票88888888888888888888')}} >
                             <Text style={styles.button}>购票</Text>
                         </TouchableOpacity>
                     </View>
