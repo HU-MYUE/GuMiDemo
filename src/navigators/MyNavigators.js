@@ -12,9 +12,12 @@ import MoviePage from '../pages/movie/index';   // 看片
 import TrendPage from '../pages/trend/IndexPage';   // 动态
 import UserPage from '../pages/user/UserPage';   // 我的
 
-import CityLocationPage from '../pages/home/cinema/cinemalist/CityLocation' //位置页面
+
 import CineMaPage from '../pages/home/cinema/detail/cinema' //影院位置
-import LocationPage from '../pages/home/cinema/cinemalist/Location' //影院地图位置
+import LocationPage from '../pages/home/cinema/detail/location' //影院详情
+
+import CityLocationPage from '../pages/home/cinema/cinemalist/CityLocation' //位置页面
+import LocationCinemaPage from '../pages/home/cinema/cinemalist/Location' //影院地图位置
 import SearchPage from '../pages/home/cinema/cinemalist/Search' //影院搜索
 
 
@@ -186,8 +189,18 @@ const HomeStack  = createStackNavigator({
         gesturesEnabled: true  //是否可以使用手势来关闭此屏幕。在iOS上默认为true，在Android上默认为false
       })
     },
+
     Location: {
         screen: LocationPage,
+        //注册View页面名称
+        navigationOptions: () => ({
+        header:null,
+        gesturesEnabled: true  //是否可以使用手势来关闭此屏幕。在iOS上默认为true，在Android上默认为false
+      })
+    },
+
+    LocationCinema: {
+        screen: LocationCinemaPage,
         //注册View页面名称
         navigationOptions: () => ({
         header:null,

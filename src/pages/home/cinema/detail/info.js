@@ -9,9 +9,6 @@ export default class Info extends Component {
 
     };
   }
-  onLocation() {
-    alert('跳转到Location页面')
-  }
   render() {
     let {info}=this.props
     return (
@@ -19,7 +16,7 @@ export default class Info extends Component {
         <Text style={styles.name}>{info.cineName}</Text>
         <View style={styles.location}>
           <Text>{info.location}</Text>
-          <TouchableOpacity onPress={this.onLocation} >
+          <TouchableOpacity onPress={()=>{this.props.navigation.navigate('Location',{info:info})}} >
             <Image style={styles.img} source={require('../../../../assets/CinemaList/location.png')} />
           </TouchableOpacity>
         </View>

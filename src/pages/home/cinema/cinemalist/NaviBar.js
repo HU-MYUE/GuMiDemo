@@ -72,7 +72,7 @@ export default class NaviBar extends Component {
 
                 <TouchableOpacity onPress={() => { 
                     //alert("进入城市定位页面") 
-                    this.props.navigation.navigate('Location') 
+                    this.props.navigation.navigate('LocationCinema') 
                     }}>
                     <View>
                         <Image
@@ -147,7 +147,9 @@ const styles = StyleSheet.create({
         marginTop: 3,
         flexDirection: 'row',
         width: 20,
-        height: 25,
+        height: 20,
+        // width: 35,
+        // height: 30,
         justifyContent: "flex-end",
         alignItems: 'flex-end',
         marginLeft: 2,

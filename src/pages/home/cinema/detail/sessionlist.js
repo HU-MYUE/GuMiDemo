@@ -11,19 +11,21 @@ export default class SessionList extends Component {
                 { id: '3', startTime: '12:00', endTime: '14:00', minprice: 45, maxprice: 71.9, place: '6号厅', taps: '国语/3D' },
                 { id: '4', startTime: '16:30', endTime: '18:30', minprice: 45, maxprice: 71.9, place: '6号厅', taps: '国语/3D' },
             ],
+            date: [
+                '今天 10.08', '明天 10.09', '后天 10.10'
+            ],
+            selected: '今天 10.08',
             loaded: false
         };
     }
     static defaultProps = {
     }
-    onBuyButton() {
-        alert('购票')
-    }
     componentDidMount() {
         this.setState({ loaded: true })
     }
-
+   
     render() {
+        let { date, selected } = this.state
         if (!this.state.loaded) {
             return this.renderLoadingView();
         }
@@ -31,8 +33,13 @@ export default class SessionList extends Component {
             <View>
                 <View style={styles.line} />
                 <View style={styles.datelist}>
-                    <Text style={styles.data}>今天10.08</Text>
-                    <Text style={styles.data}>明天10.09</Text>
+                    {date.map((item, index) => {
+                        return (
+                            <TouchableOpacity key={index} onPress={()=>{this.setState({ selected:item})}}>
+                                <Text key={index} style={item === selected ? styles.selected_date : styles.date}>{item}</Text>
+                            </TouchableOpacity>
+                        );
+                    })}
                 </View>
                 <FlatList
                     data={this.state.data}
@@ -61,7 +68,7 @@ export default class SessionList extends Component {
                         <Text style={styles.maxprice}>{item.maxprice}</Text>
                     </View>
                     <View>
-                        <TouchableOpacity  >
+                        <TouchableOpacity onPress={()=>{alert('购票')}} >
                             <Text style={styles.button}>购票</Text>
                         </TouchableOpacity>
                     </View>
@@ -86,10 +93,15 @@ var styles = StyleSheet.create({
         alignItems: "center",
         height: 40,
     },
-    data:{
-        marginLeft:15,
-        marginRight:15,
-        color:'#6C6C6C'
+    date: {
+        marginLeft: 15,
+        marginRight: 15,
+        color: '#6C6C6C'
+    },
+    selected_date: {
+        marginLeft: 15,
+        marginRight: 15,
+        color: 'red'
     },
     line: {
         height: 1,
@@ -108,7 +120,7 @@ var styles = StyleSheet.create({
         justifyContent: "center",
         alignItems: "center",
     },
-    
+
     content: {
         marginBottom: 10,
         flex: 1,

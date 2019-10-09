@@ -1,9 +1,12 @@
 import React, { Component } from "react";
 
-import { StyleSheet, View, ActivityIndicator} from "react-native";
+import { StyleSheet, View, ActivityIndicator,Text} from "react-native";
 import { Header } from 'react-native-elements';
 import Info from './info'
 import Display from './display'
+import MyCustomLeftComponent from '../../../user/userinfo/LeftComponent'
+
+
 export default class Cinema extends Component {
   constructor(props) {
     super(props);
@@ -16,14 +19,14 @@ export default class Cinema extends Component {
 
   }
   componentDidMount() {
-    this.fetchData();
+    let cinemaId = this.props.navigation.state.params.cinemaId;
+    this.fetchData(cinemaId);
   }
 
-  fetchData() {
-    fetch('http://45.76.105.46:8080/cinema/detail?cinemaId=1')
+  fetchData(cinemaId) {
+    fetch('http://45.76.105.46:8080/cinema/detail?cinemaId='+cinemaId)
       .then(response => response.json())
       .then(responseData => {
-        console.log(responseData)
         if(responseData.status==='200'){
           this.setState({
             data: responseData.result,
@@ -42,13 +45,13 @@ export default class Cinema extends Component {
     }
     
     return (
-      <View style={styles.content}>
+      <View >
         <Header
-          leftComponent={{ icon: 'menu', color: '#fff' }}
+          leftComponent={<MyCustomLeftComponent navigation={this.props.navigation} />}
           centerComponent={{ text: '影院位置', style: { color: '#fff' } }}
-          rightComponent={{ icon: 'home', color: '#fff' }}
+          //rightComponent={{ icon: 'home', color: '#fff' }}
         />
-        <Info info={this.state.data} />
+        <Info info={this.state.data} navigation={this.props.navigation}/>
         <Display movieList={this.state.data.movieList} />
       </View>
     );
@@ -66,10 +69,5 @@ var styles = StyleSheet.create({
     flexDirection: "row",
     justifyContent: "center",
     alignItems: "center"
-  },
-  content: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center"
   }
 });
