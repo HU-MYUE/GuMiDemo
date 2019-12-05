@@ -264,19 +264,19 @@ ___这是斜体加粗的文字2___
 代码块
 
 ```kotlin
-(```)
+
     function fun(){
          echo "这是一句非常牛逼的代码";
     }
     fun();
-(```)
+
 ```
 
 效果如下：
 
 单行代码
 
-```
+
 create database hero;
 ```
 
