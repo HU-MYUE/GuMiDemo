@@ -376,8 +376,9 @@ cond(no)->op
 x<sub>2</sub>
 
 O<sup>2</sup>
-
+```
  function fun(){
          echo "这是一句非常牛逼的代码";
     }
     fun();
+```
